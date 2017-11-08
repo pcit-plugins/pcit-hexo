@@ -17,18 +17,17 @@ echo $PWD
 main(){
   ./node_modules/hexo/bin/hexo version
   ./node_modules/hexo/bin/hexo g
+  cp -a public ../hexo-src/
   case $1 in
     deploy )
       ./node_modules/hexo/bin/hexo d
       ;;
     server )
       ./node_modules/hexo/bin/hexo server
-      exit 0
       ;;
-    esac
-  cp -a public ../hexo-src/
+  esac
   echo $START
   date "+%F %T"
 }
 
-main
+main $1 $2 $3
