@@ -6,7 +6,7 @@ COPY docker-entrypoint.sh /usr/local/bin
 
 COPY .ssh /root/.ssh
 
-WORKDIR /tmp/hexo
+WORKDIR /srv/hexo
 
 COPY package.json package.json
 
@@ -15,13 +15,13 @@ RUN apk add --no-cache \
          git \
       && npm install \
       && tar -zcvf node_modules.tar.gz node_modules > /dev/null 2>&1 \
-      && rm -rf package.json node_modules /root/.npm
+      && rm -rf node_modules /root/.npm /tmp/*
 
-VOLUME /tmp/hexo-src
+VOLUME /srv/hexo-src
 
 EXPOSE 4000
 
-WORKDIR /tmp/hexo-src
+WORKDIR /srv/hexo-src
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
