@@ -7,12 +7,12 @@ if [ $1 = "sh" ];then
   exit 0
 fi
 
-rm -rf node_modules public
-cp -a . ../hexo/
+rm -rf public
+cp -a source themes _config.yml ../hexo/
 cd ../hexo
 tar -zxvf node_modules.tar.gz > /dev/null 2>&1
+
 # echo "registry=https://registry.npm.taobao.org" > /root/.npmrc
-echo $PWD
 
 main(){
   ./node_modules/hexo/bin/hexo version
