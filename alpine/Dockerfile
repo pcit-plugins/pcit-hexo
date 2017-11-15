@@ -4,8 +4,6 @@ ENV TZ=Asia/Shanghai
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-COPY .ssh /root/.ssh
-
 WORKDIR /srv/hexo
 
 COPY package.json package.json
@@ -13,7 +11,11 @@ COPY package.json package.json
 RUN apk add --no-cache \
          tzdata \
          git \
+         openssh \
+         openssl \
       && npm install \
+      && mkdir -p ~/.ssh \
+      && echo -e "StrictHostKeyChecking no\nUserKnownHostsFile /dev/null" > ~/.ssh/config \
       && tar -zcvf node_modules.tar.gz node_modules > /dev/null 2>&1 \
       && rm -rf node_modules /root/.npm /tmp/*
 
