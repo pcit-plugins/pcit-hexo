@@ -7,6 +7,13 @@ if [ $1 = "sh" ];then
   exit 0
 fi
 
+if [ $1 = "version" ];then
+  cd ../hexo
+  tar -zxvf node_modules.tar.gz > /dev/null 2>&1
+  ./node_modules/hexo/bin/hexo version
+  exit 0
+fi
+
 rm -rf public
 cp -a source themes _config.yml ../hexo/
 cd ../hexo
