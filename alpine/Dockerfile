@@ -2,8 +2,6 @@ FROM node:9-alpine
 
 ENV TZ=Asia/Shanghai
 
-COPY docker-entrypoint.sh /usr/local/bin
-
 WORKDIR /srv/hexo
 
 COPY package.json package.json
@@ -11,7 +9,7 @@ COPY package.json package.json
 RUN apk add --no-cache \
          tzdata \
          git \
-         openssh \
+         openssh-client \
          openssl \
       && npm install \
       && mkdir -p ~/.ssh \
@@ -24,6 +22,8 @@ VOLUME /srv/hexo-src
 EXPOSE 4000
 
 WORKDIR /srv/hexo-src
+
+COPY docker-entrypoint.sh /usr/local/bin
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
