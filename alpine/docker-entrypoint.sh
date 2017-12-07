@@ -2,10 +2,7 @@
 
 START=`date "+%F %T"`
 
-if [ $1 = "sh" ];then
-  sh
-  exit 0
-fi
+if [ $1 = "sh" ];then sh; exit 0; fi
 
 if [ $1 = "version" ];then
   cd ../hexo
