@@ -27,7 +27,7 @@ main(){
       ./node_modules/hexo/bin/hexo d
       ;;
     server )
-      ./node_modules/hexo/bin/hexo server
+      exec ./node_modules/hexo/bin/hexo server
       ;;
   esac
   echo $START
