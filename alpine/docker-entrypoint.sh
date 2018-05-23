@@ -7,8 +7,7 @@ if [ $1 = "sh" ];then sh; exit 0; fi
 if [ $1 = "version" ];then
   cd ../hexo
   tar -zxvf node_modules.tar.gz > /dev/null 2>&1
-  ./node_modules/hexo/bin/hexo version
-  exit 0
+  exec ./node_modules/hexo/bin/hexo version
 fi
 
 rm -rf public
@@ -34,4 +33,4 @@ main(){
   date "+%F %T"
 }
 
-main $1 $2 $3
+main $@

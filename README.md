@@ -37,3 +37,7 @@ $ docker run -it --rm \
      khs1994/hexo \
      deploy
 ```
+
+# Who use this image ?
+
+* [KhsCI](https://github.com/khs1994-php/khsci/blob/master/yml_examples/hexo.yml)
