@@ -3,4 +3,4 @@ services:
 
   hexo:
     build: ./alpine
-    image: khs1994/hexo:latest@sha256:00fbd9aa6d5525eec38c971a6bc2e3ce0a93012c0482942977c7dfdd14a3b327
+    image: khs1994/hexo:latest@sha256:910fe24d1808fb92ae472715e9bb2f3fb13a0a404f8bcec1dd4ee32d4135c5c6
