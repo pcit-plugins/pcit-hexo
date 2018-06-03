@@ -33,7 +33,8 @@ $ docker run -it --rm \
 $ docker run -it --rm \
      -v $PWD:/srv/hexo-src \
      -v ~/.ssh:/root/.ssh \
-     -v ~/.gitconfig:/root/.gitconfig \
+     -e GIT_USERNAME=username \
+     -e GIT_USEREMAIL=username@domain.com \
      khs1994/hexo \
      deploy
 ```

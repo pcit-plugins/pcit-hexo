@@ -10,6 +10,10 @@ if [ $1 = "version" ];then
   exec ./node_modules/hexo/bin/hexo version
 fi
 
+git config -g user.name ${GIT_USERNAME}
+
+git config -g user.email ${GIT_USEREMAIL}
+
 rm -rf public
 cp -a source themes _config.yml ../hexo/
 cd ../hexo
