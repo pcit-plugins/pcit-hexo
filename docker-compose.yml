@@ -1,6 +1,6 @@
-version: "3.4"
-services:
+version: "3.7"
 
+services:
   hexo:
     build: ./alpine
-    image: khs1994/hexo:latest@sha256:00fbd9aa6d5525eec38c971a6bc2e3ce0a93012c0482942977c7dfdd14a3b327
+    image: khs1994/hexo:latest
