@@ -14,6 +14,7 @@ set -x
 
 git config --global user.name ${GIT_USERNAME:-ci}
 git config --global user.email ${GIT_USEREMAIL:-ci@khs1994.com}
+git config --global core.sshCommand 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
 WORKDIR=$PWD
 

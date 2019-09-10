@@ -11,7 +11,7 @@ WORKDIR /srv/hexo
 
 COPY package.json package.json
 
-RUN apk add --no-cache \
+RUN set -x && apk add --no-cache \
          tzdata \
          git \
          openssh-client \
