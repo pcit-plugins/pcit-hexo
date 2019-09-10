@@ -1,7 +1,6 @@
-FROM node:10-alpine
+FROM node:alpine
 
-LABEL maintainer="khs1994@khs1994.com" \
-      version="latest"
+LABEL maintainer="khs1994@khs1994.com"
 
 ENV TZ=Asia/Shanghai
 

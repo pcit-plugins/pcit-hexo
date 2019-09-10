@@ -5,32 +5,35 @@ START=`date "+%F %T"`
 if [ $1 = "sh" ];then sh; exit 0; fi
 
 if [ $1 = "version" ];then
-  cd ../hexo
+  cd /srv/hexo
   tar -zxvf node_modules.tar.gz > /dev/null 2>&1
-  exec ./node_modules/hexo/bin/hexo version
+  exec npx hexo version
 fi
 
-git config --global user.name ${GIT_USERNAME:-none}
+set -x
 
-git config --global user.email ${GIT_USEREMAIL:-none@none.com}
+git config --global user.name ${GIT_USERNAME:-ci}
+git config --global user.email ${GIT_USEREMAIL:-ci@khs1994.com}
+
+WORKDIR=$PWD
 
 rm -rf public
-cp -a source themes _config.yml ../hexo/
-cd ../hexo
+cp -a source themes _config.yml /srv/hexo/
+cd /srv/hexo
 tar -zxvf node_modules.tar.gz > /dev/null 2>&1
 
 # echo "registry=https://registry.npm.taobao.org" > /root/.npmrc
 
 main(){
-  ./node_modules/hexo/bin/hexo version
-  ./node_modules/hexo/bin/hexo g
-  cp -a public ../hexo-src/
+  npx hexo version
+  npx hexo g
+  cp -a public $WORKDIR
   case $1 in
     deploy )
-      ./node_modules/hexo/bin/hexo d
+      npx hexo d
       ;;
     server )
-      exec ./node_modules/hexo/bin/hexo server
+      exec npx hexo server
       ;;
   esac
   echo $START
